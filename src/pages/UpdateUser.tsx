@@ -37,6 +37,7 @@ export default function UpdateUser() {
 
   const updateUser = () => {
     setLoading(true);
+    
     api
       .put(`/users/${id}`, { name, email, role })
       .then((response) => {

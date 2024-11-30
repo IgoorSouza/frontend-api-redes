@@ -69,28 +69,34 @@ export default function UpdateTask() {
     getTaskProjectsAndUsers().then(() => setLoading(false));
   }, []);
 
-  const createTask = () => {
+  const updateTask = () => {
     setLoading(true);
+
     api
-      .post("/tasks", { name, description, priority, projectId, assigneeId })
+      .put(`/tasks${id}`, {
+        name,
+        description,
+        priority,
+        projectId,
+        assigneeId,
+      })
       .then((response) => {
         console.log(response);
-        setLoading(false);
         navigate("/tasks");
-        toast.success("Tarefa criada com sucesso.");
+        toast.success("Tarefa atualizada com sucesso.");
       })
       .catch((error) => {
         console.log(error);
-        toast.error("Ocorreu um erro ao criar a tarefa.");
+        toast.error("Ocorreu um erro ao atualizar a tarefa.");
       });
   };
 
   return (
     <Form
       title="Tarefas"
-      buttonText="Criar"
+      buttonText="Atualizar"
       loading={loading}
-      submitFunction={createTask}
+      submitFunction={updateTask}
     >
       <Input
         label="Nome"

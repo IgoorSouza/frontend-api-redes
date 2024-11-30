@@ -68,7 +68,7 @@ export default function UpdateProject() {
   return (
     <Form
       title="Projetos"
-      buttonText="Criar"
+      buttonText="Atualizar"
       loading={loading}
       submitFunction={updateProject}
     >
