@@ -73,7 +73,7 @@ export default function UpdateTask() {
     setLoading(true);
 
     api
-      .put(`/tasks${id}`, {
+      .put(`/tasks/${id}`, {
         name,
         description,
         priority,
